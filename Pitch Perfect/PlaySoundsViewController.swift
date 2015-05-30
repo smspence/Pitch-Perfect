@@ -21,14 +21,6 @@ class PlaySoundsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        if var filePath = NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3") {
-//            var fileUrl = NSURL.fileURLWithPath( filePath )
-//            audioPlayer = AVAudioPlayer(contentsOfURL: fileUrl, error: nil)
-//            audioPlayer.enableRate = true
-//        }else {
-//            println("could not find file movie_quote.mp3")
-//        }
 
         audioEngine = AVAudioEngine()
     }

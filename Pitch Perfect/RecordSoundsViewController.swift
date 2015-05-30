@@ -45,7 +45,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
         // record the user's voice to a file
 
-        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         
         let currentDateTime = NSDate()
         let formatter = NSDateFormatter()
@@ -57,6 +57,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         
         var session = AVAudioSession.sharedInstance()
         //See http://stackoverflow.com/questions/28096390/is-not-a-postfix-unary-operator
+        //   To route the audio to different outputs:
         //   let options = AVAudioSessionCategoryOptions.MixWithOthers | AVAudioSessionCategoryOptions.DefaultToSpeaker
         //   or
         //   let options : AVAudioSessionCategoryOptions = .MixWithOthers | .DefaultToSpeaker
@@ -89,10 +90,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "stopRecordingSegue") {
             // Get a reference to the view controller that we are segue-ing to (it is our PlaySoundsViewController)
-            let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as PlaySoundsViewController
+            let playSoundsVC:PlaySoundsViewController = segue.destinationViewController as! PlaySoundsViewController
             // We know that we have passed in a RecordedAudio object as the sender when performSegueWithIdentifier was called
             //  so lets reference that here
-            let data = sender as RecordedAudio
+            let data = sender as! RecordedAudio
             playSoundsVC.receivedAudio = data
         }
     }
